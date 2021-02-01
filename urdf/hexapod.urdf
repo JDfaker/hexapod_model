@@ -1,0 +1,442 @@
+<?xml version="1.0" ?>
+<robot name="hexapod">
+<!--+++++++++++++++++    Color    ++++++++++++++++++++++-->
+   <material name="Black">
+      <color rgba="0 0 0 1"/>
+   </material>
+   <material name="White">
+      <color rgba="1 1 1 1"/>
+   </material>
+   <material name="Blue">
+      <color rgba="0 0 1 1"/>
+   </material>
+   <material name="Red">
+      <color rgba="1 0 0 1"/>
+   </material>
+
+<!--++++++++++++++++++    Base     +++++++++++++++++++++-->
+   <link name="base_link">
+      <visual>
+         <origin rpy="0 0 0" xyz="0 0 0"/>
+         <geometry>
+            <box size="0.05 0.1 0.05"/>
+         </geometry>
+         <material name="White"/>
+      </visual>
+   </link>
+
+<!--++++++++++++++++++ Legs +++++++++++++++++++++++++++-->
+<!--++++++++++++++++++ RM +++++++++++++++++++++++++++-->
+   <link name="rm_link1">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+         <material name="Black"/>
+      </visual>
+   </link>
+   <joint name="rm_joint1" type="revolute">
+      <parent link="base_link"/>
+      <child link="rm_link1"/>
+      <origin rpy="0 0 0" xyz="0.025 0 -0.025"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="rm_link2">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="rm_joint2" type="revolute">
+      <parent link="rm_link1"/>
+      <child link="rm_link2"/>
+      <origin rpy="0 0 0" xyz="0.02 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="rm_link3">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Red"/>
+      </visual>
+   </link>
+   <joint name="rm_joint3" type="revolute">
+      <parent link="rm_link2"/>
+      <child link="rm_link3"/>
+      <origin rpy="0 0 0" xyz="0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="rm_link4">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="rm_joint4" type="revolute">
+      <parent link="rm_link3"/>
+      <child link="rm_link4"/>
+      <origin rpy="0 0 0" xyz="0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+<!--++++++++++++++++++ RF +++++++++++++++++++++++++++-->
+   <link name="rf_link1">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+         <material name="Black"/>
+      </visual>
+   </link>
+   <joint name="rf_joint1" type="revolute">
+      <parent link="base_link"/>
+      <child link="rf_link1"/>
+      <origin rpy="0 0 0" xyz="0.025 0.04 -0.025"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="rf_link2">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="rf_joint2" type="revolute">
+      <parent link="rf_link1"/>
+      <child link="rf_link2"/>
+      <origin rpy="0 0 0" xyz="0.02 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="rf_link3">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Red"/>
+      </visual>
+   </link>
+   <joint name="rf_joint3" type="revolute">
+      <parent link="rf_link2"/>
+      <child link="rf_link3"/>
+      <origin rpy="0 0 0" xyz="0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="rf_link4">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="rf_joint4" type="revolute">
+      <parent link="rf_link3"/>
+      <child link="rf_link4"/>
+      <origin rpy="0 0 0" xyz="0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+<!--++++++++++++++++++ RR +++++++++++++++++++++++++++-->
+   <link name="rr_link1">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+         <material name="Black"/>
+      </visual>
+   </link>
+   <joint name="rr_joint1" type="revolute">
+      <parent link="base_link"/>
+      <child link="rr_link1"/>
+      <origin rpy="0 0 0" xyz="0.025 -0.04 -0.025"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="rr_link2">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="rr_joint2" type="revolute">
+      <parent link="rr_link1"/>
+      <child link="rr_link2"/>
+      <origin rpy="0 0 0" xyz="0.02 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="rr_link3">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Red"/>
+      </visual>
+   </link>
+   <joint name="rr_joint3" type="revolute">
+      <parent link="rr_link2"/>
+      <child link="rr_link3"/>
+      <origin rpy="0 0 0" xyz="0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="rr_link4">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="rr_joint4" type="revolute">
+      <parent link="rr_link3"/>
+      <child link="rr_link4"/>
+      <origin rpy="0 0 0" xyz="0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+<!--++++++++++++++++++ LR +++++++++++++++++++++++++++-->
+   <link name="lr_link1">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+         <material name="Black"/>
+      </visual>
+   </link>
+   <joint name="lr_joint1" type="revolute">
+      <parent link="base_link"/>
+      <child link="lr_link1"/>
+      <origin rpy="0 0 0" xyz="-0.025 -0.04 -0.025"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="lr_link2">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="lr_joint2" type="revolute">
+      <parent link="lr_link1"/>
+      <child link="lr_link2"/>
+      <origin rpy="0 0 0" xyz="-0.02 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="lr_link3">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Red"/>
+      </visual>
+   </link>
+   <joint name="lr_joint3" type="revolute">
+      <parent link="lr_link2"/>
+      <child link="lr_link3"/>
+      <origin rpy="0 0 0" xyz="-0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="lr_link4">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="lr_joint4" type="revolute">
+      <parent link="lr_link3"/>
+      <child link="lr_link4"/>
+      <origin rpy="0 0 0" xyz="-0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+<!--++++++++++++++++++ LM +++++++++++++++++++++++++++-->
+   <link name="lm_link1">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+         <material name="Black"/>
+      </visual>
+   </link>
+   <joint name="lm_joint1" type="revolute">
+      <parent link="base_link"/>
+      <child link="lm_link1"/>
+      <origin rpy="0 0 0" xyz="-0.025 0 -0.025"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="lm_link2">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="lm_joint2" type="revolute">
+      <parent link="lm_link1"/>
+      <child link="lm_link2"/>
+      <origin rpy="0 0 0" xyz="-0.02 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="lm_link3">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Red"/>
+      </visual>
+   </link>
+   <joint name="lm_joint3" type="revolute">
+      <parent link="lm_link2"/>
+      <child link="lm_link3"/>
+      <origin rpy="0 0 0" xyz="-0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="lm_link4">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="lm_joint4" type="revolute">
+      <parent link="lm_link3"/>
+      <child link="lm_link4"/>
+      <origin rpy="0 0 0" xyz="-0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+<!--++++++++++++++++++ LF +++++++++++++++++++++++++++-->
+   <link name="lf_link1">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+         <material name="Black"/>
+      </visual>
+   </link>
+   <joint name="lf_joint1" type="revolute">
+      <parent link="base_link"/>
+      <child link="lf_link1"/>
+      <origin rpy="0 0 0" xyz="-0.025 0.04 -0.025"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="lf_link2">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="lf_joint2" type="revolute">
+      <parent link="lf_link1"/>
+      <child link="lf_link2"/>
+      <origin rpy="0 0 0" xyz="-0.02 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="lf_link3">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.02 0 0"/>
+         <geometry>
+            <cylinder length="0.04" radius="0.005"/>
+         </geometry>
+      <material name="Red"/>
+      </visual>
+   </link>
+   <joint name="lf_joint3" type="revolute">
+      <parent link="lf_link2"/>
+      <child link="lf_link3"/>
+      <origin rpy="0 0 0" xyz="-0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+
+   <link name="lf_link4">
+      <visual>
+         <origin rpy="0 1.5707 0" xyz="-0.01 0 0"/>
+         <geometry>
+            <cylinder length="0.02" radius="0.005"/>
+         </geometry>
+      <material name="Blue"/>
+      </visual>
+   </link>
+   <joint name="lf_joint4" type="revolute">
+      <parent link="lf_link3"/>
+      <child link="lf_link4"/>
+      <origin rpy="0 0 0" xyz="-0.04 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="300" lower="-1.5707" upper="1.5707" velocity="1"/>
+   </joint>
+</robot>

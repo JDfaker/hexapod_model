@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot name="mbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+   <!-- PROPERTY LIST -->
+   <xacro:property name="L1_len" value="1"/>
+   <xacro:property name="L2_len" value="2"/>
+   <xacro:property name="L3_len" value="2"/>
+   <xacro:property name="L4_len" value="1"/>
+
+   <!-- Macro for inertia matrix -->
+   <xacro:macro name="cylinder_inertial_matrix" params="m r h">
+       <inertial>
+           <mass value="${m}" />
+           <inertia ixx="${m*(3*r*r+h*h)/12}" ixy = "0" ixz = "0"
+               iyy="${m*(3*r*r+h*h)/12}" iyz = "0"
+               izz="${m*r*r/2}" /> 
+       </inertial>
+   </xacro:macro>
+</robot>

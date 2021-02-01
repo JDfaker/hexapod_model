@@ -1,0 +1,16 @@
+<launch>
+   <!-- Set the model path -->
+   <param name="robot_description" textfile="$(find hexapod_model)/urdf/hexapod.urdf"/>
+
+   <!-- Set the GUI parameters, display the joint controller plugin -->
+   <param name="use_gui" value="true"/>
+
+   <!-- Run the joint_state_publisher node, publish the state of robot joints -->
+   <node name="joint_state_publish" pkg="joint_state_publisher" type="joint_state_publisher"/>
+
+   <!-- Run the robot_state_publisher node, publish the tf -->
+   <node name="robot_state_publisher" pkg="robot_state_publisher" type ="robot_state_publisher"/>
+
+   <!-- Run rviz -->
+   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find hexapod_model)/config/hexapod_urdf.rviz" required="true"/>
+</launch>
